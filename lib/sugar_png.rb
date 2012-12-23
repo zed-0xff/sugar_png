@@ -1,0 +1,3 @@
+module SugarPNG
+
+end
