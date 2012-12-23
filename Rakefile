@@ -21,7 +21,7 @@ Jeweler::Tasks.new do |gem|
   #gem.description = %Q{TODO: longer description of your gem}
   gem.email = "zed.0xff@gmail.com"
   gem.authors = ["Andrey \"Zed\" Zaikin"]
-  gem.executables = %w'sugar_png'
+  #gem.executables = %w'sugar_png'
   gem.files.include "lib/**/*.rb"
   # dependencies defined in Gemfile
 end
