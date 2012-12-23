@@ -1,0 +1,12 @@
+*.png
+/*.html
+?.rb
+coverage
+rdoc
+doc
+.yardoc
+.bundle
+pkg
+*.swp
+samples/png_suite
+tmp
