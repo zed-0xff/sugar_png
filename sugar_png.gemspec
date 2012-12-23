@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/sugar_png.rb",
     "spec/spec_helper.rb",
-    "spec/sugar_png_spec.rb"
+    "spec/sugar_png_spec.rb",
+    "sugar_png.gemspec"
   ]
   s.homepage = "http://github.com/zed-0xff/sugar_png"
   s.licenses = ["MIT"]
