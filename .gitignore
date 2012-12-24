@@ -10,3 +10,4 @@ pkg
 *.swp
 samples/png_suite
 tmp
+spec
