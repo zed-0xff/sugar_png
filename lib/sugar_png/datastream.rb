@@ -7,7 +7,7 @@ module SugarPNG
     end
 
     def metadata
-      {}
+      img.metadata
     end
 
     class << self
