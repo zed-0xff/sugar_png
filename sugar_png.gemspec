@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "sugar_png"
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andrey \"Zed\" Zaikin"]
-  s.date = "2012-12-23"
+  s.date = "2012-12-24"
   s.email = "zed.0xff@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt"
@@ -23,8 +23,8 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/sugar_png.rb",
+    "lib/sugar_png/datastream.rb",
     "spec/spec_helper.rb",
-    "spec/sugar_png_spec.rb",
     "sugar_png.gemspec"
   ]
   s.homepage = "http://github.com/zed-0xff/sugar_png"
