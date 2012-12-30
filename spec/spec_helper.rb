@@ -8,57 +8,48 @@ require 'awesome_print'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-module PNGSuite
-  PNG_SUITE_URL = "http://www.schaik.com/pngsuite/PngSuite-2011apr25.tgz"
-  PNG_SUITE_DIR = File.join(File.dirname(__FILE__), "png_suite")
+SAMPLES_DIR = File.expand_path("../samples", File.dirname(__FILE__))
 
-  def self.download
-    if Dir.exist?(dir = PNG_SUITE_DIR)
-      if Dir[File.join(dir, "*.png")].size > 100
-        # already fetched and unpacked
-        return
-      end
-    else
-      Dir.mkdir(dir)
-    end
-    require 'open-uri'
-    puts "[.] fetching PNG test-suite from #{PNG_SUITE_URL} .. "
-    data = open(PNG_SUITE_URL).read
-
-    fname = File.join(dir, "png_suite.tgz")
-    File.open(fname, "wb"){ |f| f<<data }
-    puts "[.] unpacking .. "
-    system "tar", "xzf", fname, "-C", dir
+SAMPLES =
+  if ENV['SAMPLES']
+    ENV['SAMPLES'].split(' ')
+  else
+    Dir[File.join(SAMPLES_DIR,'qr_*.png')]
   end
 
-  def png_suite_file(kind, file)
-    File.join(PNG_SUITE_DIR, file)
-  end
+PNGSuite.init( File.join(SAMPLES_DIR, "png_suite") )
 
-  def rgba_for fname
-    File.join(File.expand_path(File.dirname(__FILE__)), "data", File.basename(fname, ".png")) + ".rgba"
-  end
+def png_suite_file(kind, file)
+  File.join(PNGSuite.dir, file)
+end
 
-  def png_suite_files(kind, pattern = "*.png")
-    kinds = {
-      :broken       => "x*",
-      :basic        => "bas*",
-      :filtering    => "f*",
-      :transparency => "t[bp]*",
-      :sizes        => "s*"
-    }
-    kind = kinds[kind] || raise("unknown kind: #{kind}")
-
-    a = Dir[File.join(PNG_SUITE_DIR, pattern)]
-    a.keep_if{ |fname| File.fnmatch?(kind, File.basename(fname)) }
-    puts "[?] png_suite_files: no files for #{[kind, pattern].inspect}".yellow if a.empty?
-    a
+def rgba_for fname
+  dir = File.expand_path "../samples/rgba", File.dirname(__FILE__)
+  unless Dir.exist?(dir)
+    system "tar", "xjf", dir+".tar.bz2", "-C", File.dirname(dir)
   end
+  File.join( dir, File.basename(fname, ".png")) + ".rgba"
+end
+
+def png_suite_files(kind, pattern = "*.png")
+  kinds = {
+    :broken       => "x*",
+    :basic        => "bas*",
+    :filtering    => "f*",
+    :transparency => "t[bp]*",
+    :sizes        => "s*"
+  }
+  kind = kinds[kind] || raise("unknown kind: #{kind}")
+
+  a = Dir[File.join(PNGSuite.dir, pattern)]
+  a.keep_if{ |fname| File.fnmatch?(kind, File.basename(fname)) }
+  puts "[?] png_suite_files: no files for #{[kind, pattern].inspect}".yellow if a.empty?
+  a
 end
 
 module ResourceFileHelper
   def resource_file(name)
-    File.expand_path("./resources/#{name}", File.dirname(__FILE__))
+    File.expand_path("../samples/#{name}", File.dirname(__FILE__))
   end
 
   def resource_data(name)
@@ -72,7 +63,4 @@ RSpec.configure do |config|
   config.extend  PNGSuite
   config.include PNGSuite
   config.include ResourceFileHelper
-  config.before :suite do
-    PNGSuite.download
-  end
 end

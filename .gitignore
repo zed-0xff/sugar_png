@@ -8,6 +8,7 @@ doc
 .bundle
 pkg
 *.swp
-samples/png_suite
+samples/png_suite/*
+samples/rgba
 tmp
-spec
+*.my
