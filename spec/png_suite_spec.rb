@@ -137,8 +137,9 @@ describe 'PNG testsuite' do
       end
 
       it "should decode the #{dimension}x#{dimension} interlaced image exactly the same the non-interlaced version" do
-#        interlaced_file = fname.sub(/n3p(\d\d)\.png$/, 'i3p\\1.png')
-#        SugarPNG::Image.from_file(interlaced_file).should == SugarPNG::Image.from_file(fname)
+        interlaced_file = fname.sub(/n3p(\d\d)\.png$/, 'i3p\\1.png')
+        SugarPNG::Image.from_file(interlaced_file).pixels.should ==
+          SugarPNG::Image.from_file(fname).pixels
       end
     end
   end
