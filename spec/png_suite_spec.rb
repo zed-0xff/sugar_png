@@ -72,7 +72,7 @@ describe 'PNG testsuite' do
       it "should decode #{File.basename(fname)} (filter method: #{filter_method}) exactly the same as the reference image" do
         decoded   = SugarPNG::Canvas.from_file(fname)
         reference = SugarPNG::Canvas.from_file(reference_file)
-        decoded.to_rgba_stream.should == reference.to_rgba_stream
+        decoded.should == reference
       end
     end
   end
@@ -138,8 +138,7 @@ describe 'PNG testsuite' do
 
       it "should decode the #{dimension}x#{dimension} interlaced image exactly the same the non-interlaced version" do
         interlaced_file = fname.sub(/n3p(\d\d)\.png$/, 'i3p\\1.png')
-        SugarPNG::Image.from_file(interlaced_file).pixels.should ==
-          SugarPNG::Image.from_file(fname).pixels
+        SugarPNG::Image.from_file(interlaced_file).should == SugarPNG::Image.from_file(fname)
       end
     end
   end
