@@ -1,4 +1,4 @@
-*.png
+/*.png
 /*.html
 ?.rb
 coverage
