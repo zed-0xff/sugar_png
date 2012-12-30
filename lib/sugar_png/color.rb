@@ -109,7 +109,7 @@ class SugarPNG
           raise ArgumentError.new "invalid HTML color #{s}"
         end
       else
-        @r, @g, @b = self.class.const_get(s.strip.upcase).to_depth(@depth).to_a
+        @r, @g, @b, @a = self.class.const_get(s.strip.upcase).to_depth(@depth).to_a
       end
     rescue
       raise ArgumentError.new "invalid color name: #{s}"
