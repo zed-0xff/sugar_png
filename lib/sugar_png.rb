@@ -14,11 +14,12 @@ class SugarPNG
   class ArgumentError < Exception; end
 
   extend DynAccessor
-  dyn_accessor :width, :height
+  dyn_accessor :width, :height, :zoom
   dyn_accessor :bg => %w'background bg_color background_color'
 
   def initialize h={}, &block
-    @bg = DEFAULT_BACKGROUND
+    @bg   = DEFAULT_BACKGROUND
+    @zoom = 1
     clear
 
     if block_given?
@@ -108,13 +109,14 @@ class SugarPNG
         img[x+xofs,y+yofs] = _color(c)
       end
     end
-    img.export
+
+    img.zoom(@zoom).export
   end
 
   private
 
   # create color from any of the supported color representations
   def _color c
-    c = c.is_a?(Color) ? c : Color.new(c, :depth => @depth)
+    c = c.is_a?(ZPNG::Color) ? c : Color.new(c, :depth => @depth)
   end
 end

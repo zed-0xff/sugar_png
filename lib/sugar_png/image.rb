@@ -51,6 +51,54 @@ class SugarPNG
       (ytop+1).upto(ybtm) do |y|
         scanlines[y].decoded_bytes = sl0.decoded_bytes.dup
       end
+    end # draw_borders
+
+    # zooms image by specified *integer* factor,
+    # returns self if zoom == 1, new image if zoom > 1
+    def zoom factor
+      factor = factor.to_i
+      return self if factor == 1 # no zoom required
+      raise ArgumentError.new("Invalid zoom factor #{factor}") if factor < 1
+
+      new_img = Image.new(
+        :width  => self.width*factor,
+        :height => self.height*factor,
+        :color  => self.hdr.color,
+        :depth  => self.hdr.depth
+      )
+
+      if self.bpp % 8 == 0
+        nbytes = self.bpp / 8
+        # fast-zoom is possible
+        scanlines.each_with_index do |sl,idx|
+          new_sl = new_img.scanlines[idx*factor]
+          self.width.times do |x|
+            new_sl.decoded_bytes[x*factor*nbytes, factor*nbytes] =
+              sl.decoded_bytes[x*nbytes,nbytes]*factor
+          end
+          # copy scanlines
+          (factor-1).times do |i|
+            new_img.scanlines[idx*factor+i+1].decoded_bytes = new_sl.decoded_bytes
+          end
+        end
+      else
+        # slow-zoom
+        scanlines.each_with_index do |sl,idx|
+          new_sl = new_img.scanlines[idx*factor]
+          self.width.times do |x|
+            c = sl[x]
+            factor.times do |zx|
+              new_sl[x*factor + zx] = c
+            end
+          end
+          # copy scanlines
+          (factor-1).times do |i|
+            new_img.scanlines[idx*factor+i+1].decoded_bytes = new_sl.decoded_bytes
+          end
+        end
+      end
+
+      new_img
     end
   end
 end
