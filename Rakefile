@@ -61,15 +61,17 @@ task :readme do
       f.puts "require 'sugar_png'"
       f.puts code
     end
+
     puts "[.] #{fname} .. "
     system "ruby tmp.rb"
     exit unless $?.success?
     raise "[?] no out.png" unless File.exist?("out.png")
     FileUtils.mv "out.png", "../#{fname}"
 
-    url = File.join("https://raw.github.com/zed-0xff/sugar_png/master", fname)
+    url = File.join("//raw.github.com/zed-0xff/sugar_png/master", fname)
+    img = %Q|<img src="#{url}" alt="#{title}" title="#{title}" align="right" />|
 
-    x + "\n![#{title}](#{url})"
+    x.sub(title,title+"\n"+img)
   end
   Dir.chdir ".."
   File.open('README.md','w'){ |f| f << result }
