@@ -22,5 +22,15 @@ class SugarPNG
       end
       r.chomp
     end
+
+    def to_a
+      bytes_in_row = (@width/8.0).ceil
+      r = []; ptr = 0
+      @height.times.each do
+        r << @data[ptr,bytes_in_row].unpack("B#@width")[0].split('').map(&:to_i)
+        ptr += bytes_in_row
+      end
+      r
+    end
   end
 end

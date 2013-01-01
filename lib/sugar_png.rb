@@ -8,7 +8,8 @@ require 'sugar_png/font'
 require 'sugar_png/glyph'
 
 class SugarPNG
-  DEFAULT_BACKGROUND = :transparent
+  DEFAULT_BG = :transparent
+  DEFAULT_FG = :black
 
   Canvas = Datastream = Image
 
@@ -18,9 +19,11 @@ class SugarPNG
   extend DynAccessor
   dyn_accessor :width, :height, :zoom
   dyn_accessor :bg => %w'background bg_color background_color'
+  dyn_accessor :fg => %w'foreground fg_color foreground_color color'
 
   def initialize h={}, &block
-    @bg   = DEFAULT_BACKGROUND
+    @bg   = DEFAULT_BG
+    @fg   = DEFAULT_FG
     @zoom = 1
     clear
 
@@ -67,13 +70,42 @@ class SugarPNG
 
   # draw image border with specified color
   def border size, color = nil
-    color ||= @color || @bg
+    color ||= @fg || @bg
     @borders << Border.new( size.is_a?(Hash) ? size : {:size => size, :color => color} )
   end
 
   # same as border, but default color is background
   def padding size, color = @bg
     border size, color
+  end
+
+  # draw a single glyph, used from within text()
+  def draw_glyph glyph, x0, y, color
+    #TODO: optimize?
+    glyph.to_a.each do |row|
+      x = x0
+      row.each do |bit|
+        self[x,y] = color if bit == 1
+        x += 1
+      end
+      y += 1
+    end
+  end
+
+  # draws text, optional arguments are :color, :x, :y
+  def text text, h = {}
+    font  = @font ||= Font.new
+    color = h[:color] || @fg
+    y = h[:y] || 0
+    text.split(/[\r\n]+/).each do |line|
+      x = h[:x] || 0
+      line.each_char do |c|
+        glyph = font[c]
+        draw_glyph glyph, x, y, color
+        x += glyph.width
+      end
+      y += font.height
+    end
   end
 
   # export PNG to file
@@ -114,6 +146,7 @@ class SugarPNG
 
     img.zoom(@zoom).export
   end
+  alias :export :to_s
 
   private
 

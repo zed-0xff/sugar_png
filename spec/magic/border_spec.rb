@@ -10,7 +10,20 @@ describe SugarPNG do
         img.width.should == 20
         img.height.should == 20
         img.pixels.each do |c|
-          c.should == ZPNG::Color::TRANSPARENT
+          c.should == ZPNG::Color::BLACK # SugarPNG::DEFAULT_FG
+        end
+      end
+    end
+
+    it "draws image entirely of padding" do
+      SugarPNG.new do |img|
+        img.padding 10
+
+        img = ZPNG::Image.new(img.to_s)
+        img.width.should == 20
+        img.height.should == 20
+        img.pixels.each do |c|
+          c.should == ZPNG::Color::TRANSPARENT # SugarPNG::DEFAULT_BG
         end
       end
     end

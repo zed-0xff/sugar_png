@@ -1,10 +1,15 @@
 class SugarPNG
   class Font
     DEFAULT_DIR = File.expand_path("../../data/font", File.dirname(__FILE__))
+    HEIGHT = 16
 
     def initialize dir = DEFAULT_DIR
       @dir   = dir
       @pages = {}
+    end
+
+    def height
+      HEIGHT
     end
 
     # get glyph by index
@@ -28,7 +33,7 @@ class SugarPNG
       def [] ord
         idx = ord&0xff
         @glyphs[idx] ||= Glyph.new(
-          :height => 16,
+          :height => HEIGHT,
           :width  => @data[idx].size/2,
           :data   => @data[idx],
           :ord    => ord
