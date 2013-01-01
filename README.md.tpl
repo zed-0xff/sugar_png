@@ -19,6 +19,14 @@ Installation
 Examples
 --------
 
+### Hello World!
+```ruby
+  SugarPNG.new do
+    text "Hello World!"
+    save "out.png"
+  end
+```
+
 ### Japanese text with rainbow borders, zoomed 4x
 ```ruby
   SugarPNG.new do

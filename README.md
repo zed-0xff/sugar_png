@@ -19,6 +19,15 @@ Installation
 Examples
 --------
 
+### Hello World!
+<img src="//raw.github.com/zed-0xff/sugar_png/master/samples/readme/hello_world.png" alt="Hello World!" title="Hello World!" align="right" />
+```ruby
+  SugarPNG.new do
+    text "Hello World!"
+    save "out.png"
+  end
+```
+
 ### Japanese text with rainbow borders, zoomed 4x
 <img src="//raw.github.com/zed-0xff/sugar_png/master/samples/readme/japanese_text_with_rainbow_borders_zoomed_4x.png" alt="Japanese text with rainbow borders, zoomed 4x" title="Japanese text with rainbow borders, zoomed 4x" align="right" />
 ```ruby
