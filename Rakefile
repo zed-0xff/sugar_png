@@ -67,7 +67,9 @@ task :readme do
     raise "[?] no out.png" unless File.exist?("out.png")
     FileUtils.mv "out.png", "../#{fname}"
 
-    x + "\n![#{title}](#{fname})"
+    url = File.join("https://raw.github.com/zed-0xff/sugar_png/master", fname)
+
+    x + "\n![#{title}](#{url})"
   end
   Dir.chdir ".."
   File.open('README.md','w'){ |f| f << result }

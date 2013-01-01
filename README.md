@@ -31,7 +31,7 @@ Examples
     save "out.png"
   end
 ```
-![Japanese text with rainbow borders, zoomed 4x](samples/readme/japanese_text_with_rainbow_borders_zoomed_4x.png)
+![Japanese text with rainbow borders, zoomed 4x](https://raw.github.com/zed-0xff/sugar_png/master/samples/readme/japanese_text_with_rainbow_borders_zoomed_4x.png)
 
 License
 -------
