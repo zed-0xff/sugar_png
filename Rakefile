@@ -23,6 +23,7 @@ Jeweler::Tasks.new do |gem|
   gem.authors = ["Andrey \"Zed\" Zaikin"]
   #gem.executables = %w'sugar_png'
   gem.files.include "lib/**/*.rb"
+  gem.files.include "data/font/??"
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

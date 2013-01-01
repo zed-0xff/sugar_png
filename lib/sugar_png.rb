@@ -4,6 +4,8 @@ require 'sugar_png/dyn_accessor'
 require 'sugar_png/color'
 require 'sugar_png/border'
 require 'sugar_png/image'
+require 'sugar_png/font'
+require 'sugar_png/glyph'
 
 class SugarPNG
   DEFAULT_BACKGROUND = :transparent
