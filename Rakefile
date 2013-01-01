@@ -41,12 +41,36 @@ end
 
 task :default => :spec
 
-desc "generate"
-task :gen do
-  $:.unshift("./lib")
-  require 'sugar_png'
-  img = ZPNG::Image.new :width => 16, :height => 16, :bpp => 4
-  img.save "out.png"
+desc "build readme"
+task :readme do
+  dir = "samples/readme"
+  FileUtils.mkdir_p(dir) unless Dir.exist?(dir)
+
+  tpl = File.read('README.md.tpl')
+  Dir.chdir "tmp"
+  result = tpl.gsub(/^### ([^~`\n]+?)\n```ruby(.+?)^```/m) do |x|
+    title, code = $1, $2
+    fname = File.join(
+      dir,
+      title.split(/\W+/).join('_').sub(/^_+/,'').sub(/_+$/,'').downcase + ".png"
+    )
+    
+    File.open("tmp.rb", "w:utf-8") do |f|
+      f.puts "#coding: utf-8"
+      f.puts "$:.unshift('../lib')"
+      f.puts "require 'sugar_png'"
+      f.puts code
+    end
+    puts "[.] #{fname} .. "
+    system "ruby tmp.rb"
+    exit unless $?.success?
+    raise "[?] no out.png" unless File.exist?("out.png")
+    FileUtils.mv "out.png", "../#{fname}"
+
+    x + "\n![#{title}](#{fname})"
+  end
+  Dir.chdir ".."
+  File.open('README.md','w'){ |f| f << result }
 end
 
 Rake::Task[:console].clear
