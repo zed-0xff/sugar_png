@@ -22,12 +22,16 @@ describe SugarPNG do
       background "#ffeeff"
       background_color "#ff0000"
       dot   10, 10, 'red'
-      pixel  0, 12, '#ffee00'
+      color '#ffee00'
+      pixel  0, 12
       point  0,  0, 0
     end
     r.width.should  == 200
     r.height.should == 100
     r.bg.should == "#ff0000"
+
+    img = ZPNG::Image.new(r.export)
+    img.pixels.uniq.map(&:to_html).sort.should == ["#000000", "#FF0000", "#FFEE00"]
   end
 
   it "can also eat boring non-magic hash" do

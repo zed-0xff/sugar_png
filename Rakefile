@@ -59,6 +59,7 @@ task :readme do
       f.puts "#coding: utf-8"
       f.puts "$:.unshift('../lib')"
       f.puts "require 'sugar_png'"
+      f.puts "srand"
       f.puts code
     end
 

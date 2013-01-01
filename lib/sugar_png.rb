@@ -55,7 +55,7 @@ class SugarPNG
   # d) super  Enumerators
   #
   # accepted color values: see SugarPNG::Color
-  def []= ax, ay, color
+  def []= ax, ay, color = @fg
     Array(ay).each do |y|
       Array(ax).each do |x|
         @pixels[y][x] = color

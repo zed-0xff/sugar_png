@@ -51,6 +51,19 @@ Examples
   end
 ```
 
+### White noise
+```ruby
+  SugarPNG.new do
+    bg :black  # shortcut for 'background'
+    fg :white  # ditto
+    width  100
+    height 100
+    200.times{ pixel(rand(100),rand(100)) }
+
+    save "out.png"
+  end
+```
+
 License
 -------
 Released under the MIT License.  See the [LICENSE](https://github.com/zed-0xff/sugar_png/blob/master/LICENSE.txt) file for further details.
