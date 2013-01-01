@@ -27,6 +27,17 @@ Examples
   end
 ```
 
+### Explicit image dimensions + bg color
+```ruby
+  SugarPNG.new do
+    background 'red' # or :blue, or #ffee00, or :transparent (default)
+    width 100
+    height 50
+    text "Hello World!", :color => '#ffffff'
+    save "out.png"
+  end
+```
+
 ### Japanese text with rainbow borders, zoomed 4x
 ```ruby
   SugarPNG.new do
