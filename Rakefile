@@ -61,6 +61,11 @@ task :readme do
       f.puts "require 'sugar_png'"
       f.puts "srand"
       f.puts code
+      f.puts <<-EOF
+        if defined?(@data) && @data
+          File.open("out.png","wb"){ |f| f<<@data }
+        end
+      EOF
     end
 
     puts "[.] #{fname} .. "

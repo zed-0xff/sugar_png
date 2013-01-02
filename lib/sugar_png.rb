@@ -17,7 +17,7 @@ class SugarPNG
   class ArgumentError < Exception; end
 
   extend DynAccessor
-  dyn_accessor :width, :height, :zoom
+  dyn_accessor :width, :height, :zoom, :depth
   dyn_accessor :bg => %w'background bg_color background_color'
   dyn_accessor :fg => %w'foreground fg_color foreground_color color'
 

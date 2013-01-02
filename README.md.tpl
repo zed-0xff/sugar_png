@@ -64,6 +64,23 @@ Examples
   end
 ```
 
+### Playing with transparency & 16-bit color depth
+```ruby
+  SugarPNG.new do |img|
+    img.depth = 16
+
+    100.times do |y|
+      100.times do |x|
+        img[x,y] = [0,65536*x/100,0,65535*y/100] # RGBA
+      end
+    end
+
+    # 'export' returns PNG image data suitable for streaming to client
+    # or manually saving to a file or do whatever you want 
+    @data = img.export
+  end
+```
+
 License
 -------
 Released under the MIT License.  See the [LICENSE](https://github.com/zed-0xff/sugar_png/blob/master/LICENSE.txt) file for further details.
