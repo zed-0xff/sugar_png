@@ -84,7 +84,6 @@ Examples
 ### Pixels can be set using Ranges, Enumerators & Arrays
 ```ruby
   SugarPNG.new do |img|
-    img.height = 50
     # Ranges
     img[10...50, 10..20] = :blue
     # Array + Enumerator

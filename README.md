@@ -90,7 +90,6 @@ Examples
 <img src="//raw.github.com/zed-0xff/sugar_png/master/samples/readme/pixels_can_be_set_using_ranges_enumerators_arrays.png" alt="Pixels can be set using Ranges, Enumerators & Arrays" title="Pixels can be set using Ranges, Enumerators & Arrays" align="right" />
 ```ruby
   SugarPNG.new do |img|
-    img.height = 50
     # Ranges
     img[10...50, 10..20] = :blue
     # Array + Enumerator
