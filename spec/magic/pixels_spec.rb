@@ -62,4 +62,12 @@ describe SugarPNG do
       end
     end
   end
+
+  it "should not accept []= with one arg" do
+    SugarPNG.new do |img|
+      lambda{
+        img[5] = :red
+      }.should raise_error
+    end
+  end
 end

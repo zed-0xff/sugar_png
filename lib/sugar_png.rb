@@ -55,7 +55,7 @@ class SugarPNG
   # d) super  Enumerators
   #
   # accepted color values: see SugarPNG::Color
-  def []= ax, ay, color = @fg
+  def []= ax, ay, color
     Array(ay).each do |y|
       Array(ax).each do |x|
         @pixels[y][x] = color
@@ -63,9 +63,19 @@ class SugarPNG
     end
   end
 
-  %w'put_pixel set_pixel pixel point dot'.each do |x|
+  # same as above, but color argument can be optional
+  def pixel ax, ay, color = @fg
+    Array(ay).each do |y|
+      Array(ax).each do |x|
+        @pixels[y][x] = color
+      end
+    end
+  end
+  alias :pixels :pixel
+
+  %w'put_pixel set_pixel point dot'.each do |x|
     # plural & singular aliases to increase entropy & prevent global singularity
-    class_eval "alias :#{x} :[]=; alias :#{x}s :[]="
+    class_eval "alias :#{x} :pixel; alias :#{x}s :pixels"
   end
 
   # draw image border with specified color
