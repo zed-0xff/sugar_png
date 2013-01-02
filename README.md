@@ -4,7 +4,9 @@ sugar_png    [![Build Status](https://secure.travis-ci.org/zed-0xff/sugar_png.pn
 
 Description
 -----------
-A pure ruby high-level PNG file creation toolkit
+A pure ruby high-level PNG file creation toolkit.
+
+(If you need low-level PNG manipulation & analysis toolkit - take a look at [ZPNG][https://github.com/zed-0xff/zpng])
 
 Features
 --------
