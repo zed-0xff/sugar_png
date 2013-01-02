@@ -86,6 +86,19 @@ Examples
   end
 ```
 
+### Pixels can be set using Ranges, Enumerators & Arrays
+<img src="//raw.github.com/zed-0xff/sugar_png/master/samples/readme/pixels_can_be_set_using_ranges_enumerators_arrays.png" alt="Pixels can be set using Ranges, Enumerators & Arrays" title="Pixels can be set using Ranges, Enumerators & Arrays" align="right" />
+```ruby
+  SugarPNG.new do |img|
+    img.height = 50
+    # Ranges
+    img[10...50, 10..20] = :blue
+    # Array + Enumerator
+    img[[1,2,4,8,16,32], 0.step(50,2)] = :red
+    img.zoom = 2 
+  end.save("out.png")
+```
+
 License
 -------
 Released under the MIT License.  See the [LICENSE](https://github.com/zed-0xff/sugar_png/blob/master/LICENSE.txt) file for further details.
