@@ -1,4 +1,4 @@
-sugar_png    [![Build Status](https://secure.travis-ci.org/zed-0xff/sugar_png.png)](http://secure.travis-ci.org/zed-0xff/sugar_png)  [![Dependency Status](https://gemnasium.com/zed-0xff/sugar_png.png)](https://gemnasium.com/zed-0xff/sugar_png)
+sugar_png    [![Build Status](https://travis-ci.org/zed-0xff/sugar_png.png?branch=master)](https://travis-ci.org/zed-0xff/sugar_png)  [![Dependency Status](https://gemnasium.com/zed-0xff/sugar_png.png)](https://gemnasium.com/zed-0xff/sugar_png)
 ======
 
 
