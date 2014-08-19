@@ -74,7 +74,7 @@ task :readme do
     raise "[?] no out.png" unless File.exist?("out.png")
     FileUtils.mv "out.png", "../#{fname}"
 
-    url = File.join("//raw.githubusercontent.com/zed-0xff/sugar_png/master", fname)
+    url = File.join("https://raw.githubusercontent.com/zed-0xff/sugar_png/master", fname)
     img = %Q|<img src="#{url}" alt="#{title}" title="#{title}" align="right" />|
 
     x.sub(title,title+"\n"+img)

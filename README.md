@@ -22,7 +22,7 @@ Examples
 --------
 
 ### Hello World!
-<img src="//raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/hello_world.png" alt="Hello World!" title="Hello World!" align="right" />
+<img src="https://raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/hello_world.png" alt="Hello World!" title="Hello World!" align="right" />
 ```ruby
   SugarPNG.new do
     text "Hello World!"
@@ -31,7 +31,7 @@ Examples
 ```
 
 ### Explicit image dimensions + bg color
-<img src="//raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/explicit_image_dimensions_bg_color.png" alt="Explicit image dimensions + bg color" title="Explicit image dimensions + bg color" align="right" />
+<img src="https://raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/explicit_image_dimensions_bg_color.png" alt="Explicit image dimensions + bg color" title="Explicit image dimensions + bg color" align="right" />
 ```ruby
   SugarPNG.new do
     background 'red' # or :blue, or #ffee00, or :transparent (default)
@@ -43,7 +43,7 @@ Examples
 ```
 
 ### Japanese text with rainbow borders, zoomed 4x
-<img src="//raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/japanese_text_with_rainbow_borders_zoomed_4x.png" alt="Japanese text with rainbow borders, zoomed 4x" title="Japanese text with rainbow borders, zoomed 4x" align="right" />
+<img src="https://raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/japanese_text_with_rainbow_borders_zoomed_4x.png" alt="Japanese text with rainbow borders, zoomed 4x" title="Japanese text with rainbow borders, zoomed 4x" align="right" />
 ```ruby
   SugarPNG.new do
     border 1, :red
@@ -57,7 +57,7 @@ Examples
 ```
 
 ### White noise
-<img src="//raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/white_noise.png" alt="White noise" title="White noise" align="right" />
+<img src="https://raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/white_noise.png" alt="White noise" title="White noise" align="right" />
 ```ruby
   SugarPNG.new do
     bg :black  # shortcut for 'background'
@@ -71,7 +71,7 @@ Examples
 ```
 
 ### Playing with transparency & 16-bit color depth
-<img src="//raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/playing_with_transparency_16_bit_color_depth.png" alt="Playing with transparency & 16-bit color depth" title="Playing with transparency & 16-bit color depth" align="right" />
+<img src="https://raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/playing_with_transparency_16_bit_color_depth.png" alt="Playing with transparency & 16-bit color depth" title="Playing with transparency & 16-bit color depth" align="right" />
 ```ruby
   SugarPNG.new do |img|
     img.depth = 16
@@ -89,7 +89,7 @@ Examples
 ```
 
 ### Pixels can be set using Ranges, Enumerators & Arrays
-<img src="//raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/pixels_can_be_set_using_ranges_enumerators_arrays.png" alt="Pixels can be set using Ranges, Enumerators & Arrays" title="Pixels can be set using Ranges, Enumerators & Arrays" align="right" />
+<img src="https://raw.githubusercontent.com/zed-0xff/sugar_png/master/samples/readme/pixels_can_be_set_using_ranges_enumerators_arrays.png" alt="Pixels can be set using Ranges, Enumerators & Arrays" title="Pixels can be set using Ranges, Enumerators & Arrays" align="right" />
 ```ruby
   SugarPNG.new do |img|
     # Ranges
