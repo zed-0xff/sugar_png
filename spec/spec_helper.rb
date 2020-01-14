@@ -1,6 +1,7 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
+require 'rspec/its'
 require 'sugar_png'
 require 'awesome_print'
 
@@ -60,6 +61,7 @@ module ResourceFileHelper
 end
 
 RSpec.configure do |config|
+  config.expect_with(:rspec) { |c| c.syntax = [:should, :expect] }
   config.extend  PNGSuite
   config.include PNGSuite
   config.include ResourceFileHelper

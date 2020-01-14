@@ -67,7 +67,7 @@ describe SugarPNG do
     SugarPNG.new do |img|
       lambda{
         img[5] = :red
-      }.should raise_error
+      }.should raise_error(ArgumentError)
     end
   end
 end

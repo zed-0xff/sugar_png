@@ -1,3 +1,4 @@
+#coding: binary
 module PNGSuite
   PNG_SUITE_URL = "http://www.schaik.com/pngsuite/PngSuite-2011apr25.tgz"
 
@@ -20,8 +21,8 @@ module PNGSuite
 
       fname = File.join(dir, "png_suite.tgz")
       File.open(fname, "wb"){ |f| f<<data }
-      puts "[.] unpacking .. "
-      system "tar", "xzf", fname, "-C", dir
+      puts "[.] unpacking #{fname} .. "
+      system "tar", "xf", fname, "-C", dir
     end
 
     def each *prefixes

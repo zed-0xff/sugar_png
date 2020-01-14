@@ -5,7 +5,7 @@ describe SugarPNG::Datastream do
   describe '.from_io'do
     it "should raise an error when loading a file with a bad signature" do
       filename = resource_file('damaged_signature.png')
-      lambda { SugarPNG::Datastream.from_file(filename) }.should raise_error
+      lambda { SugarPNG::Datastream.from_file(filename) }.should raise_error(ZPNG::NotSupported)
     end
 
     it "should NOT raise an error if the CRC of a chunk is incorrect" do
