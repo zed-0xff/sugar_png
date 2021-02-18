@@ -17,7 +17,7 @@ module PNGSuite
       end
       require 'open-uri'
       puts "[.] fetching PNG test-suite from #{PNG_SUITE_URL} .. "
-      data = open(PNG_SUITE_URL).read
+      data = URI.open(PNG_SUITE_URL).read
 
       fname = File.join(dir, "png_suite.tgz")
       File.open(fname, "wb"){ |f| f<<data }
