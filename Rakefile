@@ -11,8 +11,8 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
+require 'juwelier'
+Juwelier::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "sugar_png"
   gem.homepage = "http://github.com/zed-0xff/sugar_png"
@@ -26,7 +26,7 @@ Jeweler::Tasks.new do |gem|
   gem.files.include "data/font/??"
   # dependencies defined in Gemfile
 end
-Jeweler::RubygemsDotOrgTasks.new
+Juwelier::RubygemsDotOrgTasks.new
 
 require 'rspec/core'
 require 'rspec/core/rake_task'
@@ -47,6 +47,7 @@ task :readme do
   FileUtils.mkdir_p(dir) unless Dir.exist?(dir)
 
   tpl = File.read('README.md.tpl')
+  Dir.mkdir "tmp" unless Dir.exist?("tmp")
   Dir.chdir "tmp"
   result = tpl.gsub(/^### ([^~`\n]+?)\n```ruby(.+?)^```/m) do |x|
     title, code = $1, $2
