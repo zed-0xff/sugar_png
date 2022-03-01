@@ -99,7 +99,7 @@ GEM
     semver2 (3.4.2)
     stringio (3.0.1)
     thread_safe (0.3.6)
-    zpng (0.4.1)
+    zpng (0.4.2)
       rainbow
 
 PLATFORMS
@@ -111,7 +111,7 @@ DEPENDENCIES
   juwelier
   rspec
   rspec-its
-  zpng (>= 0.4.1)
+  zpng (>= 0.4.2)
 
 BUNDLED WITH
    2.2.32
