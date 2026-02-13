@@ -1,6 +1,6 @@
-require 'zpng'
-
-require 'sugar_png/dyn_accessor'
+require "zpng"
+require "sugar_png/version"
+require "sugar_png/dyn_accessor"
 require 'sugar_png/color'
 require 'sugar_png/border'
 require 'sugar_png/image'

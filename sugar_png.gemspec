@@ -2,7 +2,8 @@
 
 Gem::Specification.new do |s|
   s.name = "sugar_png".freeze
-  s.version = File.read(File.join(__dir__, "VERSION")).strip
+  require_relative "lib/sugar_png/version"
+  s.version = SugarPNG::VERSION
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
@@ -13,7 +14,7 @@ Gem::Specification.new do |s|
     "README.md",
   ]
   s.files = Dir.chdir(__dir__) do
-    %w[Gemfile Gemfile.lock LICENSE.txt README.md VERSION sugar_png.gemspec] +
+    %w[Gemfile Gemfile.lock LICENSE.txt README.md sugar_png.gemspec] +
       Dir["lib/**/*.rb"] +
       Dir["data/font/??"]
   end
@@ -30,6 +31,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rspec", ">= 0")
   s.add_development_dependency("rspec-its", ">= 0")
   s.add_development_dependency("bundler", ">= 0")
-  s.add_development_dependency("awesome_print", ">= 0")
 end
 
