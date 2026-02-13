@@ -10,23 +10,7 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 require 'rake'
-
-require 'juwelier'
-Juwelier::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "sugar_png"
-  gem.homepage = "http://github.com/zed-0xff/sugar_png"
-  gem.license = "MIT"
-  gem.summary = %Q{a syntax sugar of PNG manipulation}
-  #gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "zed.0xff@gmail.com"
-  gem.authors = ["Andrey \"Zed\" Zaikin"]
-  #gem.executables = %w'sugar_png'
-  gem.files.include "lib/**/*.rb"
-  gem.files.include "data/font/??"
-  # dependencies defined in Gemfile
-end
-Juwelier::RubygemsDotOrgTasks.new
+require 'bundler/gem_tasks'
 
 require 'rspec/core'
 require 'rspec/core/rake_task'
@@ -84,9 +68,6 @@ task :readme do
   File.open('README.md','w'){ |f| f << result }
 end
 
-Rake::Task[:console].clear
-
-# from /usr/local/lib64/ruby/gems/1.9.1/gems/jeweler-1.8.4/lib/jeweler/tasks.rb
 desc "Start IRB with all runtime dependencies loaded"
 task :console, [:script] do |t,args|
   dirs = ['./ext', './lib'].select { |dir| File.directory?(dir) }

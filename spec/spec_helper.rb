@@ -3,7 +3,6 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 require 'rspec/its'
 require 'sugar_png'
-require 'awesome_print'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

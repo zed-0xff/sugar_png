@@ -10,6 +10,4 @@ group :development do
   gem "rspec"
   gem "rspec-its"
   gem "bundler"
-  gem "juwelier"
-  gem "awesome_print"
 end
