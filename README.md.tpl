@@ -24,7 +24,7 @@ Examples
 ### Hello World!
 ```ruby
   SugarPNG.new do
-    text "Hello World!"
+    text "Hello World!", color: 'red'
     save "out.png"
   end
 ```
@@ -35,7 +35,7 @@ Examples
     background 'red' # or :blue, or #ffee00, or :transparent (default)
     width 100
     height 50
-    text "Hello World!", :color => '#ffffff'
+    text "Hello World!", color: '#ffffff'
     save "out.png"
   end
 ```
@@ -60,7 +60,7 @@ Examples
     fg :white  # ditto
     width  100
     height 100
-    200.times{ pixel(rand(100),rand(100)) }
+    200.times{ pixel(rand(100), rand(100)) }
 
     save "out.png"
   end
@@ -73,7 +73,7 @@ Examples
 
     100.times do |y|
       100.times do |x|
-        img[x,y] = [0,65536*x/100,0,65535*y/100] # RGBA
+        img[x, y] = [0, 65536*x/100, 0, 65535*y/100] # RGBA
       end
     end
 
@@ -89,7 +89,7 @@ Examples
     # Ranges
     img[10...50, 10..20] = :blue
     # Array + Enumerator
-    img[[1,2,4,8,16,32], 0.step(50,2)] = :red
+    img[[1, 2, 4, 8, 16, 32], 0.step(50, 2)] = :red
     img.zoom = 2 
   end.save("out.png")
 ```
