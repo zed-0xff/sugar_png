@@ -26,7 +26,7 @@ Examples
 
 ```ruby
   SugarPNG.new do
-    text "Hello World!", color: 'red'
+    text "Hello\nWorld!", color: 'red'
     save "out.png"
   end
 ```

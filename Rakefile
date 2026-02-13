@@ -23,7 +23,7 @@ RSpec::Core::RakeTask.new(:rcov) do |spec|
   spec.rcov = true
 end
 
-task :default => :spec
+task :default => [:spec, :readme]
 
 desc "build readme"
 task :readme do
